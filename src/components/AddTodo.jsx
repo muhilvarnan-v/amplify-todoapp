@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { API, graphqlOperation } from 'aws-amplify'
 import { createTodo } from '../graphql/mutations'
+import { View, TextField, TextAreaField, Button } from '@aws-amplify/ui-react'
 
 const styles = {
     addTodoContainer: { margin: 20 },
@@ -31,14 +32,14 @@ export default function AddTodo() {
     }
 
     return (
-        <div style={styles.addTodoContainer}>
-            <input
+        <View style={styles.addTodoContainer}>
+            <TextField
                 onChange={event => setInput('name', event.target.value)}
                 style={styles.input}
                 value={formState.name}
                 placeholder="Name"
             />
-            <textarea
+            <TextAreaField
                 onChange={event => setInput('description', event.target.value)}
                 style={styles.input}
                 value={formState.description}
@@ -46,7 +47,7 @@ export default function AddTodo() {
                 rows={10}
                 cols={50}
             />
-            <button style={styles.button} onClick={addTodo}>Create Todo</button>
-        </div>
+            <Button style={styles.button} onClick={addTodo}>Create Todo</Button>
+        </View>
     )
 }

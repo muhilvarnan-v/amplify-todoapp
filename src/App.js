@@ -1,5 +1,5 @@
 import React from 'react'
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { withAuthenticator, View } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import AddTodo from './components/AddTodo';
 import ListTodo from './components/ListTodo';
@@ -12,10 +12,10 @@ const styles = {
 function App({ signOut, user }) {
   return (<>
     <Header signOut={signOut} user={user} />
-    <div style={styles.container}>
+    <View style={styles.container}>
       <AddTodo />
       <ListTodo />
-    </div>
+    </View>
   </>
   );
 }

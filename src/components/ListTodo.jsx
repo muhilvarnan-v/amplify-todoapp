@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { API, graphqlOperation } from 'aws-amplify'
 import { listTodos } from '../graphql/queries'
+import { View, Heading, Text } from '@aws-amplify/ui-react'
 
 const styles = {
     listTodoContainer: { margin: 20 },
@@ -24,16 +25,16 @@ export default function ListTodo() {
         } catch (err) { console.log('error fetching todos') }
     }
 
-    return (<div style={styles.listTodoContainer}>
-        <h4>Todos</h4>
+    return (<View style={styles.listTodoContainer}>
+        <Heading level={4}>Todos</Heading>
         {
             todos.map((todo, index) => (
-                <div key={todo.id ? todo.id : index} style={styles.todo}>
-                    <p style={styles.todoName}>{todo.name}</p>
-                    <p style={styles.todoDescription}>{todo.description}</p>
-                </div>
+                <View key={todo.id ? todo.id : index} style={styles.todo}>
+                    <Text style={styles.todoName}>{todo.name}</Text>
+                    <Text style={styles.todoDescription}>{todo.description}</Text>
+                </View>
             ))
         }
-    </div>)
+    </View>)
 }
 
